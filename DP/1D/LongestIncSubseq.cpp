@@ -3,10 +3,12 @@ public:
     int lengthOfLIS(vector<int>& nums) {
         vector<int> tail;
         for (int x : nums) {
+            //finds first postion of element greater than x in tail array
             auto it = lower_bound(tail.begin(), tail.end(), x);
             if (it == tail.end())
                 tail.push_back(x);
             else
+                //replaces that position element with x
                 *it = x;
         }
         return tail.size();
